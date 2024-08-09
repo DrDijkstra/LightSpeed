@@ -7,7 +7,8 @@
 
 public class LightSpeedCore {
     
-    static var selfRef : LightSpeedCore? = nil
+    static var selfRef : LightSpeedCore? 
+    var domainModule : DomainModule?
 
     public static func getInstance() -> LightSpeedCore {
         guard selfRef != nil else {
@@ -20,5 +21,9 @@ public class LightSpeedCore {
     
     private init () {
         
+    }
+    
+    public func initSDK (apiGwURl: String) {
+        domainModule = DomainModule(URL: apiGwURl)
     }
 }
