@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4A6182502C66A7DA006FF2F0 /* LightSpeedCore in Frameworks */ = {isa = PBXBuildFile; productRef = 4A61824F2C66A7DA006FF2F0 /* LightSpeedCore */; };
 		4AD022982C66A1E4001F65B7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD022972C66A1E4001F65B7 /* AppDelegate.swift */; };
 		4AD0229A2C66A1E4001F65B7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD022992C66A1E4001F65B7 /* SceneDelegate.swift */; };
 		4AD0229C2C66A1E4001F65B7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD0229B2C66A1E4001F65B7 /* ViewController.swift */; };
@@ -33,6 +34,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A6182502C66A7DA006FF2F0 /* LightSpeedCore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,6 +88,9 @@
 			dependencies = (
 			);
 			name = LSPicSaver;
+			packageProductDependencies = (
+				4A61824F2C66A7DA006FF2F0 /* LightSpeedCore */,
+			);
 			productName = LSPicSaver;
 			productReference = 4AD022942C66A1E4001F65B7 /* LSPicSaver.app */;
 			productType = "com.apple.product-type.application";
@@ -114,6 +119,9 @@
 				Base,
 			);
 			mainGroup = 4AD0228B2C66A1E4001F65B7;
+			packageReferences = (
+				4A61824E2C66A7DA006FF2F0 /* XCLocalSwiftPackageReference "LightSpeedCore" */,
+			);
 			productRefGroup = 4AD022952C66A1E4001F65B7 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -367,6 +375,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		4A61824E2C66A7DA006FF2F0 /* XCLocalSwiftPackageReference "LightSpeedCore" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = LightSpeedCore;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		4A61824F2C66A7DA006FF2F0 /* LightSpeedCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = LightSpeedCore;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		4AD022A02C66A1E4001F65B7 /* LSPicSaver.xcdatamodeld */ = {
