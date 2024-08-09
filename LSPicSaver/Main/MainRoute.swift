@@ -7,18 +7,13 @@ enum MainRoute: Route {
 }
 
 class MainCoordinator: NavigationCoordinator<MainRoute> {
-    private let navigationController: UINavigationController
-
-    // Initializer with no parameters
-     init(initialRoute: MainRoute) {
-        self.navigationController = UINavigationController() // Initialize here
-        super.init(initialRoute: initialRoute)
+    
+    init() {
+         super.init(initialRoute: .initial)
     }
     
-    // Initializer with a specific root view controller
-    init(rootViewController: UIViewController) {
-        self.navigationController = UINavigationController(rootViewController: rootViewController) // Initialize here
-        super.init(initialRoute: .initial)
+    init(rootViewController: RootViewController) {
+        super.init(rootViewController: rootViewController)
     }
 
     override func prepareTransition(for route: MainRoute) -> NavigationTransition {

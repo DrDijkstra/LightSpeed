@@ -20,7 +20,7 @@ class MainApplication: UIApplication {
     }
     
     func startRouter () {
-        let mainCordinator = MainCoordinator(initialRoute: .initial)
+        let mainCordinator = MainCoordinator()
         router = mainCordinator.strongRouter
         router.setRoot(for: window)
     }
