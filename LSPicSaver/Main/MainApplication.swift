@@ -7,7 +7,22 @@
 
 import Foundation
 import UIKit
+import XCoordinator
 
 class MainApplication: UIApplication {
+    
+    var window = UIWindow()
+    var router:StrongRouter<MainRoute>!
+    
+    override init() {
+        super.init()
+        startRouter()
+    }
+    
+    func startRouter () {
+        let mainCordinator = MainCoordinator(initialRoute: .initial)
+        router = mainCordinator.strongRouter
+        router.setRoot(for: window)
+    }
     
 }
