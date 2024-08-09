@@ -16,7 +16,7 @@ class DomainModule {
     static var selfRef : DomainModule? = nil
     
     init(URL apigGwUrl : String) {
-        
+        apiService = ApiProtocolImpl(baseUrl: apigGwUrl)
     }
     
     static func getInstance() -> DomainModule {

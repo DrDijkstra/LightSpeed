@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import XCoordinator
+import LightSpeedCore
 
 class MainApplication: UIApplication {
     
@@ -23,6 +24,10 @@ class MainApplication: UIApplication {
         let mainCordinator = MainCoordinator()
         router = mainCordinator.strongRouter
         router.setRoot(for: window)
+    }
+    
+    func initSdk () {
+        LightSpeedCore.getInstance().initSDK(apiGwURl: Config.baseUrl)
     }
     
 }
