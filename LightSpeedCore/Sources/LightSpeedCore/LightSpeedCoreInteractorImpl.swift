@@ -16,8 +16,8 @@ class LightSpeedCoreInteractorImpl : LightSpeedCoreInteractor {
         photoFetcherService = domainModule.getPhotoFetcherService()
     }
     
-    func fetchImage(callback ) {
-        photoFetcherService.fetchPhoto()
+    func fetchPhotos(callback: @escaping(ApiCallResult<[PhotoInfo]>) -> Void) {
+        photoFetcherService.fetchPhotos(callback: callback)
     }
     
 }

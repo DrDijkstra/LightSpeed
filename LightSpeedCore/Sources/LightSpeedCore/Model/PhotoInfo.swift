@@ -1,6 +1,6 @@
 import Foundation
 
-class PhotoInfo {
+public class PhotoInfo {
     var id: String?
     var author: String?
     var width: Int?

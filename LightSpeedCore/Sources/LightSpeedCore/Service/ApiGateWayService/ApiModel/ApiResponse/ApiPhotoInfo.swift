@@ -25,12 +25,17 @@ class ApiPhotoInfo: BaseResponse {
     }
     
     init(id: String, author: String, width: Int, height: Int, url: String, downloadUrl: String) {
+        super.init()
         self.id = id
         self.author = author
         self.width = width
         self.height = height
         self.url = url
         self.downloadUrl = downloadUrl
+    }
+    
+    required init(from decoder: any Decoder) throws {
+        fatalError("init(from:) has not been implemented")
     }
     
  }

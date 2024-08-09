@@ -8,5 +8,5 @@
 import Foundation
 
 public protocol LightSpeedCoreInteractor {
-    func fetchImage()
+    func fetchPhotos(callback: @escaping(ApiCallResult<[PhotoInfo]>) -> Void)
 }

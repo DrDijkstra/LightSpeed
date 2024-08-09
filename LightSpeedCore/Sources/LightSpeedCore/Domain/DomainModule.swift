@@ -10,6 +10,8 @@ import Foundation
 class DomainModule {
     
     private var photoFetcherService: PhotoFetcherService?
+    private var apiService: ApiProtocol?
+
     
     static var selfRef : DomainModule? = nil
     
@@ -30,5 +32,12 @@ class DomainModule {
             return newService
         }
     }
-
+    
+    func getApiService() -> ApiProtocol {
+        guard let apiService else  {
+            fatalError("api service is not initialised")
+        }
+        return apiService
+    }
+    
 }
