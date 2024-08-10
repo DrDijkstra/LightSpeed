@@ -11,11 +11,11 @@ import Alamofire
 import Alamofire
 
 protocol ApiProtocol {
-    func fetchPhotos(gwCallback: @escaping(ApiGateWayCallResult<ApiPhotoInfo>) -> Void)
+    func fetchPhotos(gwCallback: @escaping(ApiGateWayCallResult<[ApiPhotoInfo]>) -> Void)
 }
 
 class ApiProtocolImpl: ApiProtocol {
-    func fetchPhotos(gwCallback: @escaping (ApiGateWayCallResult<ApiPhotoInfo>) -> Void) {
+    func fetchPhotos(gwCallback: @escaping (ApiGateWayCallResult<[ApiPhotoInfo]>) -> Void) {
         executeRequest(RequestRouter.fetchPhoto, gwCallback: gwCallback)
     }
     

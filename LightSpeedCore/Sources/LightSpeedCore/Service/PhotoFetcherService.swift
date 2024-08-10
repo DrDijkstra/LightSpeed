@@ -24,7 +24,10 @@ class PhotoFetcherServiceImpl: PhotoFetcherService {
             result in
             switch result {
             case .success(let apiPhotoInfos):
-                callback(.success(sc: []))
+                let photoInfoList: [PhotoInfo] = apiPhotoInfos.map { apiPhotoInfo in
+                    return PhotoInfo(apiPhotoInfo: apiPhotoInfo)
+                }
+                callback(.success(sc: photoInfoList))
             case .failure(let error):
                 callback(.failure(error: ResponseStatus()))
             }
