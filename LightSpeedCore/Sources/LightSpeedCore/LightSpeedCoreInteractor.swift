@@ -10,7 +10,7 @@ import Foundation
 public protocol LightSpeedCoreInteractor {
     func fetchPhotos(callback: @escaping(ApiCallResult<[PhotoInfo]>) -> Void)
     func savePhotoList(photoInfoList: [PhotoInfo], completion: @escaping (Bool) -> Void)
-    func fetchAllPhotos() -> [PhotoInfo]
-    func fetchRandomPhoto() -> PhotoInfo?
+    func fetchAllPhotos(completion: @escaping ([PhotoInfo]) -> Void)
+    func fetchRandomPhoto(index:Int, completion: @escaping (PhotoInfo?, Int) -> Void)
     func removeAllPhoto()
 }

@@ -7,14 +7,12 @@
 
 import Foundation
 import CoreData
-import Foundation
-import CoreData
 
 protocol PhotoRepository {
     @discardableResult
     func savePhotoList(photoInfoList: [PhotoInfo], completion: @escaping (Bool) -> Void)
-    func fetchAllPhotos() -> [PhotoInfo]
-    func fetchRandomPhoto() -> PhotoInfo?
+    func fetchAllPhotos(completion: @escaping ([PhotoInfo]) -> Void)
+    func fetchRandomPhoto(index:Int, completion: @escaping (PhotoInfo?, Int) -> Void)
     func removeAllPhoto()
 }
 
@@ -65,29 +63,33 @@ class PhotoRepositoryImpl: PhotoRepository {
         }
     }
 
-    func fetchAllPhotos() -> [PhotoInfo] {
+    func fetchAllPhotos(completion: @escaping ([PhotoInfo]) -> Void) {
         let context = CoreDataStack.shared.context
-        let fetchRequest: NSFetchRequest<PhotoInfoCore> = PhotoInfoCore.fetchRequest()
-        do {
-            let photos = try context.fetch(fetchRequest)
-            return photos.map { photo in
-                PhotoInfo(
-                    id: photo.id ?? "",
-                    author: photo.authorName ?? "",
-                    width: Int(photo.width),
-                    height: Int(photo.height),
-                    url: photo.url ?? "",
-                    downloadUrl: photo.downloadUrl ?? ""
-                )
+        context.perform {
+            let fetchRequest: NSFetchRequest<PhotoInfoCore> = PhotoInfoCore.fetchRequest()
+            do {
+                let photos = try context.fetch(fetchRequest)
+                let photoInfoList = photos.map { photo in
+                    PhotoInfo(
+                        id: photo.id ?? "",
+                        author: photo.authorName ?? "",
+                        width: Int(photo.width),
+                        height: Int(photo.height),
+                        url: photo.url ?? "",
+                        downloadUrl: photo.downloadUrl ?? ""
+                    )
+                }
+                completion(photoInfoList)
+            } catch {
+                print("Failed to fetch photos: \(error)")
+                completion([])
             }
-        } catch {
-            print("Failed to fetch photos: \(error)")
-            return []
         }
     }
 
-    func fetchRandomPhoto() -> PhotoInfo? {
-        let photos = fetchAllPhotos()
-        return photos.randomElement()
+    func fetchRandomPhoto(index:Int, completion: @escaping (PhotoInfo?, Int) -> Void) {
+        fetchAllPhotos { photos in
+            completion(photos.randomElement(), index)
+        }
     }
 }

@@ -23,6 +23,8 @@ class PicSaverPresenterImpl: BasePresenterImpl, PicSaverPresenter{
         self.uiUpdateDelegate = uiUpdateDelegate
     }
     
+    var totalImageCount = 0
+    
     func fetchPhoto() {
         interactor?.fetchPhotos(callback: {
            [weak self] result in
@@ -40,30 +42,41 @@ class PicSaverPresenterImpl: BasePresenterImpl, PicSaverPresenter{
     
     func saveInLocalDb(photoList: [PhotoInfo]) {
         interactor?.removeAllPhoto()
+        addInitialData()
         interactor?.savePhotoList(photoInfoList: photoList, completion: {
             [weak self] isSuccess in
             guard let self = self else {
                 return
             }
             if isSuccess {
-                if let randomPhoto = self.interactor?.fetchRandomPhoto() {
-                    self.uiUpdateDelegate.updateCollectionView(list: [randomPhoto])
-                }
+                self.interactor?.fetchRandomPhoto(index: totalImageCount, completion: {
+                    photoInfo,index in
+                    self.updatePhotoDataSource(photoInfo: photoInfo, index: index)
+                })
                
             }
         })
     }
     
-    func fetchRandomPhotoFromLocalDB() -> PhotoInfo? {
-        return self.interactor?.fetchRandomPhoto()
+    func updatePhotoDataSource(photoInfo: PhotoInfo?, index:Int) {
+        if let photoInfo {
+            self.totalImageCount += 1
+            self.uiUpdateDelegate.replaceNewDataInDataSource(photoInfo: photoInfo, index: index)
+        }
+    }
+    
+    func addInitialData() {
+        let photoInfo = PhotoInfo()
+        photoInfo.author = "fetching image..."
+        self.uiUpdateDelegate.appendNewDataInDataSource(photoInfo: photoInfo)
     }
     
     func onAddButtonPressed() {
-        if let randomPhoto = self.interactor?.fetchRandomPhoto() {
-            self.uiUpdateDelegate.appendNewDataInDataSource(photoInfo: randomPhoto)
-        }else{
-            print("No Photo Found")
-        }
+        addInitialData()
+        self.interactor?.fetchRandomPhoto(index: totalImageCount, completion: {
+            photoInfo,index in
+            self.updatePhotoDataSource(photoInfo: photoInfo, index: index)
+        })
         
     }
 }

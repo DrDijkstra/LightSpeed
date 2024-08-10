@@ -9,8 +9,11 @@ public class PhotoInfo {
     public var downloadUrl: String?
     public var heightMultiplier: String?
     
+    public init () {
+        
+    }
     
-    init(id: String, author: String, width: Int, height: Int, url: String, downloadUrl: String) {
+    public init(id: String, author: String, width: Int, height: Int, url: String, downloadUrl: String) {
         self.id = id
         self.author = author
         self.width = width

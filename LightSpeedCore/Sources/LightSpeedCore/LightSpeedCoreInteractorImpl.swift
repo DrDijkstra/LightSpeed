@@ -28,12 +28,12 @@ class LightSpeedCoreInteractorImpl : LightSpeedCoreInteractor {
         photoRepository.savePhotoList(photoInfoList: photoInfoList, completion: completion)
     }
     
-    func fetchAllPhotos() -> [PhotoInfo] {
-        return photoRepository.fetchAllPhotos()
+    func fetchAllPhotos(completion: @escaping ([PhotoInfo]) -> Void) {
+        return photoRepository.fetchAllPhotos(completion: completion)
     }
     
-    func fetchRandomPhoto() -> PhotoInfo? {
-        return photoRepository.fetchRandomPhoto()
+    func fetchRandomPhoto(index:Int, completion: @escaping (PhotoInfo?, Int) -> Void) {
+        return photoRepository.fetchRandomPhoto(index: index, completion: completion)
     }
     
     func removeAllPhoto() {

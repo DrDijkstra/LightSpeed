@@ -12,6 +12,7 @@ import CHTCollectionViewWaterfallLayout
 protocol ViewControllerUpdater : AnyObject{
     func updateCollectionView(list: [PhotoInfo])
     func appendNewDataInDataSource(photoInfo: PhotoInfo)
+    func replaceNewDataInDataSource(photoInfo: PhotoInfo, index: Int)
 }
 
 class ViewController: BaseViewController {
@@ -42,10 +43,22 @@ class ViewController: BaseViewController {
     }
     
     func appendNewDataInDataSource(photoInfo: PhotoInfo) {
-        dataSource.append(photoInfo)
-        let newIndexPath = IndexPath(item: dataSource.count - 1, section: 0)
-        collectionView.insertItems(at: [newIndexPath])
+        DispatchQueue.main.async {
+            self.dataSource.append(photoInfo)
+            let newIndexPath = IndexPath(item: self.dataSource.count - 1, section: 0)
+            
+            // Check if the indexPath is valid
+            guard newIndexPath.item < self.collectionView.numberOfItems(inSection: 0) else {
+                print("Index path is out of bounds")
+                return
+            }
+            
+            self.collectionView.performBatchUpdates({
+                self.collectionView.insertItems(at: [newIndexPath])
+            }, completion: nil)
+        }
     }
+
 
 
 }
@@ -65,9 +78,20 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
 }
 
 extension ViewController: ViewControllerUpdater {
+    func replaceNewDataInDataSource(photoInfo: PhotoInfo, index: Int) {
+        DispatchQueue.main.async{
+            self.dataSource[index] = photoInfo
+            self.collectionView.reloadData()
+        }
+        
+    }
+    
     func updateCollectionView(list: [PhotoInfo]) {
-        self.dataSource = list
-        self.collectionView.reloadData()
+        DispatchQueue.main.async{
+            self.dataSource = list
+            self.collectionView.reloadData()
+        }
+        
     }
     
 }
@@ -75,8 +99,8 @@ extension ViewController: ViewControllerUpdater {
 extension ViewController: CHTCollectionViewDelegateWaterfallLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let item = dataSource[indexPath.row]
-        let height = item.height! 
-        let width = item.width!
+        let height = item.height ?? 100
+        let width = item.width ?? 100
         
         let imageSize = CGSize(width: width, height: height)
         return imageSize
