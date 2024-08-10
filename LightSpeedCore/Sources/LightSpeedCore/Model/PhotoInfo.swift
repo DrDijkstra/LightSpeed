@@ -1,12 +1,14 @@
 import Foundation
 
 public class PhotoInfo {
-    var id: String?
-    var author: String?
-    var width: Int?
-    var height: Int?
-    var url: String?
-    var downloadUrl: String?
+    public var id: String?
+    public var author: String?
+    public var width: Int?
+    public var height: Int?
+    public var url: String?
+    public var downloadUrl: String?
+    public var heightMultiplier: String?
+    
     
     init(id: String, author: String, width: Int, height: Int, url: String, downloadUrl: String) {
         self.id = id
@@ -15,6 +17,9 @@ public class PhotoInfo {
         self.height = height
         self.url = url
         self.downloadUrl = downloadUrl
+        
+        let heightMultiplier:Double = Double(height) / Double(width)
+        self.heightMultiplier = String(heightMultiplier)
     }
     
     init(apiPhotoInfo: ApiPhotoInfo) {
@@ -24,6 +29,9 @@ public class PhotoInfo {
         self.height = apiPhotoInfo.height
         self.url = apiPhotoInfo.url
         self.downloadUrl = apiPhotoInfo.downloadUrl
+        
+        let heightMultiplier:Double = Double(apiPhotoInfo.height ?? 0) / Double(apiPhotoInfo.width ?? 1)
+        self.heightMultiplier = String(heightMultiplier)
     }
     
   

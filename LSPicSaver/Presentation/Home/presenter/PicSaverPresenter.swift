@@ -16,11 +16,14 @@ protocol PicSaverPresenter {
 class PicSaverPresenterImpl: BasePresenterImpl, PicSaverPresenter{
     func fetchPhoto() {
         interactor?.fetchPhotos(callback: {
-            result in
+           [weak self] result in
+            guard let self else {
+                return
+            }
             switch result {
             case .success(let sc):
-                break
-            case .failure(let error):
+                self.uiUpdateDelegate.updateCollectionView(list: sc)
+            case .failure(_):
                 break
             }
         })

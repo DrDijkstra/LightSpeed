@@ -21,6 +21,7 @@
 		4AD3E58F2C671C8100222722 /* PicSaverPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD3E58E2C671C8100222722 /* PicSaverPresenter.swift */; };
 		4AD3E5942C671D5A00222722 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD3E5932C671D5A00222722 /* BaseViewController.swift */; };
 		4AD3E5962C671D7100222722 /* BasePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD3E5952C671D7100222722 /* BasePresenter.swift */; };
+		4AD3E59A2C673EF300222722 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD3E5992C673EF300222722 /* PhotoCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,7 @@
 		4AD3E58E2C671C8100222722 /* PicSaverPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicSaverPresenter.swift; sourceTree = "<group>"; };
 		4AD3E5932C671D5A00222722 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		4AD3E5952C671D7100222722 /* BasePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasePresenter.swift; sourceTree = "<group>"; };
+		4AD3E5992C673EF300222722 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +127,7 @@
 			isa = PBXGroup;
 			children = (
 				4AD0229B2C66A1E4001F65B7 /* ViewController.swift */,
+				4AD3E5992C673EF300222722 /* PhotoCollectionViewCell.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -260,6 +263,7 @@
 				4A6182522C66A98F006FF2F0 /* main.swift in Sources */,
 				4AD022982C66A1E4001F65B7 /* AppDelegate.swift in Sources */,
 				4AD3E5852C66D11800222722 /* Config.swift in Sources */,
+				4AD3E59A2C673EF300222722 /* PhotoCollectionViewCell.swift in Sources */,
 				4AD022A22C66A1E4001F65B7 /* LSPicSaver.xcdatamodeld in Sources */,
 				4AD3E5942C671D5A00222722 /* BaseViewController.swift in Sources */,
 				4A6182572C66AC97006FF2F0 /* MainRoute.swift in Sources */,
