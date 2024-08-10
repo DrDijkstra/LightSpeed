@@ -10,10 +10,19 @@ import LightSpeedCore
 
 protocol PicSaverPresenter {
     func fetchPhoto()
+    func onAddButtonPressed()
 }
 
 
 class PicSaverPresenterImpl: BasePresenterImpl, PicSaverPresenter{
+    
+    weak var uiUpdateDelegate:ViewControllerUpdater!
+    
+     init(uiUpdateDelegate: ViewControllerUpdater) {
+        super.init()
+        self.uiUpdateDelegate = uiUpdateDelegate
+    }
+    
     func fetchPhoto() {
         interactor?.fetchPhotos(callback: {
            [weak self] result in
@@ -27,13 +36,6 @@ class PicSaverPresenterImpl: BasePresenterImpl, PicSaverPresenter{
                 break
             }
         })
-    }
-    
-    weak var uiUpdateDelegate:ViewControllerUpdater!
-    
-     init(uiUpdateDelegate: ViewControllerUpdater) {
-        super.init()
-        self.uiUpdateDelegate = uiUpdateDelegate
     }
     
     func saveInLocalDb(photoList: [PhotoInfo]) {
@@ -50,6 +52,18 @@ class PicSaverPresenterImpl: BasePresenterImpl, PicSaverPresenter{
                
             }
         })
+    }
+    
+    func fetchRandomPhotoFromLocalDB() -> PhotoInfo? {
+        return self.interactor?.fetchRandomPhoto()
+    }
+    
+    func onAddButtonPressed() {
+        if let randomPhoto = self.interactor?.fetchRandomPhoto() {
+            self.uiUpdateDelegate.appendNewDataInDataSource(photoInfo: randomPhoto)
+        }else{
+            print("No Photo Found")
+        }
         
     }
 }

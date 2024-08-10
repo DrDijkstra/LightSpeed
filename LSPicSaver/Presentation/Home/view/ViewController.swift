@@ -11,6 +11,7 @@ import CHTCollectionViewWaterfallLayout
 
 protocol ViewControllerUpdater : AnyObject{
     func updateCollectionView(list: [PhotoInfo])
+    func appendNewDataInDataSource(photoInfo: PhotoInfo)
 }
 
 class ViewController: BaseViewController {
@@ -37,8 +38,15 @@ class ViewController: BaseViewController {
     }
     
     @IBAction func onAddPhotoButtonPressed(_ sender: Any) {
-       
+        presenter.onAddButtonPressed()
     }
+    
+    func appendNewDataInDataSource(photoInfo: PhotoInfo) {
+        dataSource.append(photoInfo)
+        let newIndexPath = IndexPath(item: dataSource.count - 1, section: 0)
+        collectionView.insertItems(at: [newIndexPath])
+    }
+
 
 }
 
@@ -67,15 +75,12 @@ extension ViewController: ViewControllerUpdater {
 extension ViewController: CHTCollectionViewDelegateWaterfallLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let item = dataSource[indexPath.row]
-        let height = item.height! + 50
+        let height = item.height! 
         let width = item.width!
         
         let imageSize = CGSize(width: width, height: height)
         return imageSize
     }
-    
-
-    
     
 }
 
