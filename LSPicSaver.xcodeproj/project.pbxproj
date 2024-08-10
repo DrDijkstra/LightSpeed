@@ -14,7 +14,6 @@
 		4AD022982C66A1E4001F65B7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD022972C66A1E4001F65B7 /* AppDelegate.swift */; };
 		4AD0229C2C66A1E4001F65B7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD0229B2C66A1E4001F65B7 /* ViewController.swift */; };
 		4AD0229F2C66A1E4001F65B7 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 4AD0229E2C66A1E4001F65B7 /* Base */; };
-		4AD022A22C66A1E4001F65B7 /* LSPicSaver.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4AD022A02C66A1E4001F65B7 /* LSPicSaver.xcdatamodeld */; };
 		4AD022A42C66A1E6001F65B7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4AD022A32C66A1E6001F65B7 /* Assets.xcassets */; };
 		4AD022A72C66A1E6001F65B7 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 4AD022A62C66A1E6001F65B7 /* Base */; };
 		4AD3E5852C66D11800222722 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD3E5842C66D11800222722 /* Config.swift */; };
@@ -28,11 +27,11 @@
 		4A6182512C66A98F006FF2F0 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		4A6182542C66A9E4006FF2F0 /* MainApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainApplication.swift; sourceTree = "<group>"; };
 		4A6182562C66AC97006FF2F0 /* MainRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRoute.swift; sourceTree = "<group>"; };
+		4ACC85DC2C677355001B57D8 /* LightSpeedCore.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LightSpeedCore.xcdatamodel; sourceTree = "<group>"; };
 		4AD022942C66A1E4001F65B7 /* LSPicSaver.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LSPicSaver.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4AD022972C66A1E4001F65B7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4AD0229B2C66A1E4001F65B7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		4AD0229E2C66A1E4001F65B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		4AD022A12C66A1E4001F65B7 /* LSPicSaver.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LSPicSaver.xcdatamodel; sourceTree = "<group>"; };
 		4AD022A32C66A1E6001F65B7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4AD022A62C66A1E6001F65B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4AD022A82C66A1E6001F65B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -90,7 +89,7 @@
 				4A6182532C66A9C5006FF2F0 /* Main */,
 				4AD022A32C66A1E6001F65B7 /* Assets.xcassets */,
 				4AD022A82C66A1E6001F65B7 /* Info.plist */,
-				4AD022A02C66A1E4001F65B7 /* LSPicSaver.xcdatamodeld */,
+				4ACC85DB2C677355001B57D8 /* LightSpeedCore.xcdatamodeld */,
 			);
 			path = LSPicSaver;
 			sourceTree = "<group>";
@@ -264,7 +263,6 @@
 				4AD022982C66A1E4001F65B7 /* AppDelegate.swift in Sources */,
 				4AD3E5852C66D11800222722 /* Config.swift in Sources */,
 				4AD3E59A2C673EF300222722 /* PhotoCollectionViewCell.swift in Sources */,
-				4AD022A22C66A1E4001F65B7 /* LSPicSaver.xcdatamodeld in Sources */,
 				4AD3E5942C671D5A00222722 /* BaseViewController.swift in Sources */,
 				4A6182572C66AC97006FF2F0 /* MainRoute.swift in Sources */,
 				4A6182552C66A9E4006FF2F0 /* MainApplication.swift in Sources */,
@@ -505,13 +503,14 @@
 /* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
-		4AD022A02C66A1E4001F65B7 /* LSPicSaver.xcdatamodeld */ = {
+		4ACC85DB2C677355001B57D8 /* LightSpeedCore.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				4AD022A12C66A1E4001F65B7 /* LSPicSaver.xcdatamodel */,
+				4ACC85DC2C677355001B57D8 /* LightSpeedCore.xcdatamodel */,
 			);
-			currentVersion = 4AD022A12C66A1E4001F65B7 /* LSPicSaver.xcdatamodel */;
-			path = LSPicSaver.xcdatamodeld;
+			currentVersion = 4ACC85DC2C677355001B57D8 /* LightSpeedCore.xcdatamodel */;
+			name = LightSpeedCore.xcdatamodeld;
+			path = /Users/sanjay.dey/Documents/LightSpeed/LSPicSaver/LightSpeedCore.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

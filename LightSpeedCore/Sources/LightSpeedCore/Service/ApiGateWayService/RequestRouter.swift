@@ -12,7 +12,7 @@ import Alamofire
 enum RequestRouter : URLRequestConvertible, URLConvertible{
     case fetchPhoto
     
-    static var baseUrl = "https://picsum.photos/"
+    static var baseUrl = ""
     
     var method: HTTPMethod {
         switch self {

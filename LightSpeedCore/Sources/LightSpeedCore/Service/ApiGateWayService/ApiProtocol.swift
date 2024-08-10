@@ -28,6 +28,7 @@ class ApiProtocolImpl: ApiProtocol {
         smConfig.timeoutIntervalForRequest = 40
         let requestInterceptor = ApiInterceptor()
         sm = Session(configuration: smConfig, interceptor: requestInterceptor)
+        RequestRouter.baseUrl = baseUrl
         self.baseUrl = baseUrl
     }
     
