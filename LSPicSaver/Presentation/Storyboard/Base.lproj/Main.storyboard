@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="QQ2-0r-FPR">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="QQ2-0r-FPR">
                                 <rect key="frame" x="0.0" y="59" width="393" height="759"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="8fH-nk-vZ7" customClass="WaterfallLayout" customModule="LSPicSaver" customModuleProvider="target">
@@ -97,10 +97,16 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="q0g-ed-gSz"/>
                                 </connections>
                             </collectionView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LPz-Zc-cMe">
-                                <rect key="frame" x="267" y="724.66666666666663" width="75" height="40.333333333333371"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Button"/>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LPz-Zc-cMe">
+                                <rect key="frame" x="286" y="709" width="56" height="56"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="56" id="Bh0-oZ-88O"/>
+                                    <constraint firstAttribute="width" secondItem="LPz-Zc-cMe" secondAttribute="height" multiplier="1:1" id="ENE-J3-cV6"/>
+                                </constraints>
+                                <color key="tintColor" systemColor="labelColor"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="add"/>
                                 <connections>
                                     <action selector="onAddPhotoButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Irt-ph-c7L"/>
                                 </connections>
@@ -124,6 +130,7 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="addButton" destination="LPz-Zc-cMe" id="avy-oq-WUM"/>
                         <outlet property="collectionView" destination="QQ2-0r-FPR" id="wGi-Ao-XuK"/>
                     </connections>
                 </viewController>
@@ -133,6 +140,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="add" width="170.66667175292969" height="170.66667175292969"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

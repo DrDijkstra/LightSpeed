@@ -20,6 +20,7 @@ class ViewController: BaseViewController {
     var presenter: PicSaverPresenter!
     var dataSource:[PhotoInfo] = []
     
+    @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
     
     override func viewDidLoad() {
