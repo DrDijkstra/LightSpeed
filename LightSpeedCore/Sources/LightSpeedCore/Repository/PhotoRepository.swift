@@ -18,6 +18,8 @@ protocol PhotoRepository {
 
 class PhotoRepositoryImpl: PhotoRepository {
     
+    var totalImagesCount: Int = 0
+    
     func removeAllPhoto() {
         let context = CoreDataStack.shared.context
         let fetchRequest: NSFetchRequest<NSFetchRequestResult> = PhotoInfoCore.fetchRequest()
@@ -33,6 +35,7 @@ class PhotoRepositoryImpl: PhotoRepository {
 
     @discardableResult
     func savePhotoList(photoInfoList: [PhotoInfo], completion: @escaping (Bool) -> Void) {
+        totalImagesCount = photoInfoList.count
         let context = CoreDataStack.shared.context
 
         context.perform {
@@ -87,9 +90,36 @@ class PhotoRepositoryImpl: PhotoRepository {
         }
     }
 
-    func fetchRandomPhoto(index:Int, completion: @escaping (PhotoInfo?, Int) -> Void) {
-        fetchAllPhotos { photos in
-            completion(photos.randomElement(), index)
+    func fetchRandomPhoto(index: Int, completion: @escaping (PhotoInfo?, Int) -> Void) {
+            guard totalImagesCount > 0 else {
+                completion(nil, index)
+                return
+            }
+            
+            let randomIndex = Int.random(in: 0..<totalImagesCount)
+            let context = CoreDataStack.shared.context
+            context.perform {
+                let fetchRequest: NSFetchRequest<PhotoInfoCore> = PhotoInfoCore.fetchRequest()
+                fetchRequest.fetchOffset = randomIndex
+                fetchRequest.fetchLimit = 1
+                
+                do {
+                    let photos = try context.fetch(fetchRequest)
+                    let photoInfo = photos.first.flatMap { photo in
+                        PhotoInfo(
+                            id: photo.id ?? "",
+                            author: photo.authorName ?? "",
+                            width: Int(photo.width),
+                            height: Int(photo.height),
+                            url: photo.url ?? "",
+                            downloadUrl: photo.downloadUrl ?? ""
+                        )
+                    }
+                    completion(photoInfo, index)
+                } catch {
+                    print("Failed to fetch random photo: \(error)")
+                    completion(nil, index)
+                }
+            }
         }
-    }
 }

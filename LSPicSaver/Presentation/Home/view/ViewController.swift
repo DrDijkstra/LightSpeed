@@ -47,7 +47,6 @@ class ViewController: BaseViewController {
             self.dataSource.append(photoInfo)
             let newIndexPath = IndexPath(item: self.dataSource.count - 1, section: 0)
             
-            // Check if the indexPath is valid
             guard newIndexPath.item < self.collectionView.numberOfItems(inSection: 0) else {
                 print("Index path is out of bounds")
                 return
