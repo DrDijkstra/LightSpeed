@@ -11,6 +11,7 @@ import LightSpeedCore
 protocol PicSaverPresenter {
     func fetchPhoto()
     func onAddButtonPressed()
+    func collectionViewUiLoaded()
 }
 
 
@@ -73,10 +74,12 @@ class PicSaverPresenterImpl: BasePresenterImpl, PicSaverPresenter{
     
     func onAddButtonPressed() {
         addInitialData()
-        self.interactor?.fetchRandomPhoto(index: totalImageCount, completion: {
+    }
+    
+    func collectionViewUiLoaded(){
+        self.interactor?.fetchRandomPhoto(index: totalImageCount - 1, completion: {
             photoInfo,index in
             self.updatePhotoDataSource(photoInfo: photoInfo, index: index)
         })
-        
     }
 }

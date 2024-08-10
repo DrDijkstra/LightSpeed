@@ -18,9 +18,7 @@ protocol ViewControllerUpdater : AnyObject{
 class ViewController: BaseViewController {
 
     var presenter: PicSaverPresenter!
-    
     var dataSource:[PhotoInfo] = []
-    
     
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -47,19 +45,12 @@ class ViewController: BaseViewController {
             self.dataSource.append(photoInfo)
             let newIndexPath = IndexPath(item: self.dataSource.count - 1, section: 0)
             
-            guard newIndexPath.item < self.collectionView.numberOfItems(inSection: 0) else {
-                print("Index path is out of bounds")
-                return
-            }
-            
             self.collectionView.performBatchUpdates({
                 self.collectionView.insertItems(at: [newIndexPath])
+                self.presenter.collectionViewUiLoaded()
             }, completion: nil)
         }
     }
-
-
-
 }
 
 
@@ -78,21 +69,26 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
 
 extension ViewController: ViewControllerUpdater {
     func replaceNewDataInDataSource(photoInfo: PhotoInfo, index: Int) {
-        DispatchQueue.main.async{
-            self.dataSource[index] = photoInfo
-            self.collectionView.reloadData()
+        guard index >= 0 && index < dataSource.count else {
+            return
         }
+
+        dataSource[index] = photoInfo
         
+        DispatchQueue.main.async {
+            let indexPath = IndexPath(item: index, section: 0)
+            self.collectionView.performBatchUpdates({
+                self.collectionView.reloadItems(at: [indexPath])
+            }, completion: nil)
+        }
     }
-    
+
     func updateCollectionView(list: [PhotoInfo]) {
         DispatchQueue.main.async{
             self.dataSource = list
             self.collectionView.reloadData()
         }
-        
     }
-    
 }
 
 extension ViewController: CHTCollectionViewDelegateWaterfallLayout {
@@ -104,7 +100,6 @@ extension ViewController: CHTCollectionViewDelegateWaterfallLayout {
         let imageSize = CGSize(width: width, height: height)
         return imageSize
     }
-    
 }
 
 extension ViewController {
