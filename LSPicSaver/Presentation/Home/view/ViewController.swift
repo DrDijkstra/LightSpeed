@@ -7,11 +7,17 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+protocol ViewControllerUpdater : AnyObject{
+    
+}
 
+class ViewController: BaseViewController {
+
+    var presenter: PicSaverPresenter!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        presenter = PicSaverPresenterImpl(uiUpdateDelegate: self)
     }
     
     static func getViewController() -> ViewController {
@@ -20,6 +26,9 @@ class ViewController: UIViewController {
         return vc
     }
 
+}
 
+extension ViewController: ViewControllerUpdater {
+    
 }
 
