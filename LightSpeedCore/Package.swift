@@ -29,7 +29,9 @@ let package = Package(
                 "XCoordinator",
                 "Kingfisher",
                 "CHTCollectionViewWaterfallLayout"
-            ]
+            ],
+            resources: [.process("LightSpeedCore.xcdatamodeld")]
+
         ),
         .testTarget(
             name: "LightSpeedCoreTests",

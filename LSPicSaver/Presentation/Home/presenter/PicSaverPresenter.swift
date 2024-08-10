@@ -22,7 +22,7 @@ class PicSaverPresenterImpl: BasePresenterImpl, PicSaverPresenter{
             }
             switch result {
             case .success(let sc):
-                self.uiUpdateDelegate.updateCollectionView(list: sc)
+                self.saveInLocalDb(photoList: sc)
             case .failure(_):
                 break
             }
@@ -34,5 +34,22 @@ class PicSaverPresenterImpl: BasePresenterImpl, PicSaverPresenter{
      init(uiUpdateDelegate: ViewControllerUpdater) {
         super.init()
         self.uiUpdateDelegate = uiUpdateDelegate
+    }
+    
+    func saveInLocalDb(photoList: [PhotoInfo]) {
+        interactor?.removeAllPhoto()
+        interactor?.savePhotoList(photoInfoList: photoList, completion: {
+            [weak self] isSuccess in
+            guard let self = self else {
+                return
+            }
+            if isSuccess {
+                if let randomPhoto = self.interactor?.fetchRandomPhoto() {
+                    self.uiUpdateDelegate.updateCollectionView(list: [randomPhoto])
+                }
+               
+            }
+        })
+        
     }
 }

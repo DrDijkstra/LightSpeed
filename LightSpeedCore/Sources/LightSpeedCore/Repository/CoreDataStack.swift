@@ -13,7 +13,12 @@ class CoreDataStack {
     private init() {}
     
     lazy var persistentContainer: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: "LightSpeedCore")
+        guard let modelURL = Bundle.module.url(forResource: "LightSpeedCore", withExtension: "momd"),
+              let model = NSManagedObjectModel(contentsOf: modelURL) else {
+            fatalError("Failed to locate Core Data model")
+        }
+
+        let container = NSPersistentContainer(name: "LightSpeedCore", managedObjectModel: model)
         container.loadPersistentStores { description, error in
             if let error = error as NSError? {
                 fatalError("Unresolved error \(error), \(error.userInfo)")
@@ -21,6 +26,7 @@ class CoreDataStack {
         }
         return container
     }()
+
     
     var context: NSManagedObjectContext {
         return persistentContainer.viewContext

@@ -7,29 +7,43 @@
 
 import Foundation
 import CoreData
+import Foundation
+import CoreData
 
 protocol PhotoRepository {
-    func savePhotoList(photoInfoList: [PhotoInfo])
+    @discardableResult
+    func savePhotoList(photoInfoList: [PhotoInfo], completion: @escaping (Bool) -> Void)
     func fetchAllPhotos() -> [PhotoInfo]
     func fetchRandomPhoto() -> PhotoInfo?
+    func removeAllPhoto()
 }
 
 class PhotoRepositoryImpl: PhotoRepository {
+    
+    func removeAllPhoto() {
+        let context = CoreDataStack.shared.context
+        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = PhotoInfoCore.fetchRequest()
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        
+        do {
+            try context.execute(deleteRequest)
+            try context.save()
+        } catch {
+            print("Failed to delete all photos: \(error)")
+        }
+    }
 
-    func savePhotoList(photoInfoList: [PhotoInfo]) {
+    @discardableResult
+    func savePhotoList(photoInfoList: [PhotoInfo], completion: @escaping (Bool) -> Void) {
         let context = CoreDataStack.shared.context
 
-        // Begin a background context for saving data
         context.perform {
-            // Fetch existing photos to prevent duplicates
             let fetchRequest: NSFetchRequest<PhotoInfoCore> = PhotoInfoCore.fetchRequest()
             do {
                 let existingPhotos = try context.fetch(fetchRequest)
                 let existingPhotoIds = Set(existingPhotos.map { $0.id ?? "" })
                 
-                // Convert PhotoInfo list to Photo entities
                 for photoInfo in photoInfoList {
-                    // Check if the photo already exists
                     if !existingPhotoIds.contains(photoInfo.id ?? "") {
                         let photo = PhotoInfoCore(context: context)
                         photo.id = photoInfo.id
@@ -43,8 +57,10 @@ class PhotoRepositoryImpl: PhotoRepository {
                 
                 // Save the context
                 try context.save()
+                completion(true) // Successfully saved
             } catch {
                 print("Failed to fetch or save photos: \(error)")
+                completion(false) // Failed to save
             }
         }
     }

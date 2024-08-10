@@ -11,6 +11,7 @@ class DomainModule {
     
     private var photoFetcherService: PhotoFetcherService?
     private var apiService: ApiProtocol?
+    private var photoRepository: PhotoRepository?
 
     
     static var selfRef : DomainModule? = nil
@@ -34,6 +35,16 @@ class DomainModule {
             let newService = PhotoFetcherServiceImpl()
             photoFetcherService = newService
             return newService
+        }
+    }
+    
+    func getPhotoRepository() -> PhotoRepository {
+        if let repo = photoRepository {
+            return repo
+        } else {
+            let repo = PhotoRepositoryImpl()
+            photoRepository = repo
+            return repo
         }
     }
     
