@@ -11,6 +11,7 @@
 		4A6182522C66A98F006FF2F0 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6182512C66A98F006FF2F0 /* main.swift */; };
 		4A6182552C66A9E4006FF2F0 /* MainApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6182542C66A9E4006FF2F0 /* MainApplication.swift */; };
 		4A6182572C66AC97006FF2F0 /* MainRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6182562C66AC97006FF2F0 /* MainRoute.swift */; };
+		4ACC85E02C67F981001B57D8 /* SkeletonView in Frameworks */ = {isa = PBXBuildFile; productRef = 4ACC85DF2C67F981001B57D8 /* SkeletonView */; };
 		4AD022982C66A1E4001F65B7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD022972C66A1E4001F65B7 /* AppDelegate.swift */; };
 		4AD0229C2C66A1E4001F65B7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD0229B2C66A1E4001F65B7 /* ViewController.swift */; };
 		4AD0229F2C66A1E4001F65B7 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 4AD0229E2C66A1E4001F65B7 /* Base */; };
@@ -47,6 +48,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4ACC85E02C67F981001B57D8 /* SkeletonView in Frameworks */,
 				4A6182502C66A7DA006FF2F0 /* LightSpeedCore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -198,6 +200,7 @@
 			name = LSPicSaver;
 			packageProductDependencies = (
 				4A61824F2C66A7DA006FF2F0 /* LightSpeedCore */,
+				4ACC85DF2C67F981001B57D8 /* SkeletonView */,
 			);
 			productName = LSPicSaver;
 			productReference = 4AD022942C66A1E4001F65B7 /* LSPicSaver.app */;
@@ -229,6 +232,7 @@
 			mainGroup = 4AD0228B2C66A1E4001F65B7;
 			packageReferences = (
 				4A61824E2C66A7DA006FF2F0 /* XCLocalSwiftPackageReference "LightSpeedCore" */,
+				4ACC85DE2C67F981001B57D8 /* XCRemoteSwiftPackageReference "SkeletonView" */,
 			);
 			productRefGroup = 4AD022952C66A1E4001F65B7 /* Products */;
 			projectDirPath = "";
@@ -495,10 +499,26 @@
 		};
 /* End XCLocalSwiftPackageReference section */
 
+/* Begin XCRemoteSwiftPackageReference section */
+		4ACC85DE2C67F981001B57D8 /* XCRemoteSwiftPackageReference "SkeletonView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Juanpe/SkeletonView";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.31.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
 		4A61824F2C66A7DA006FF2F0 /* LightSpeedCore */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = LightSpeedCore;
+		};
+		4ACC85DF2C67F981001B57D8 /* SkeletonView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4ACC85DE2C67F981001B57D8 /* XCRemoteSwiftPackageReference "SkeletonView" */;
+			productName = SkeletonView;
 		};
 /* End XCSwiftPackageProductDependency section */
 
