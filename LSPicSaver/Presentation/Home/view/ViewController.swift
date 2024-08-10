@@ -29,6 +29,25 @@ class ViewController: BaseViewController {
         layout.columnCount = 2
         layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         collectionView.collectionViewLayout = layout
+        let gesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPressGesture(_:) ))
+        collectionView.addGestureRecognizer(gesture)
+    }
+    
+    @objc func handleLongPressGesture(_ gesture : UILongPressGestureRecognizer) {
+        switch gesture.state {
+
+        case .began:
+            guard let indexPath = collectionView.indexPathForItem(at: gesture.location(in: collectionView)) else{
+                return
+            }
+            collectionView.beginInteractiveMovementForItem(at: indexPath)
+        case .changed:
+            collectionView.updateInteractiveMovementTargetPosition(gesture.location(in: collectionView))
+        case .ended:
+            collectionView.endInteractiveMovement()
+        default:
+            collectionView.cancelInteractiveMovement()
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -65,6 +84,19 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
         cell.authorName.text = dataSource[indexPath.row].author
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, canMoveItemAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        let item = dataSource.remove(at: sourceIndexPath.row)
+        dataSource.insert(item, at: destinationIndexPath.row)
+        // Force layout update
+        collectionView.collectionViewLayout.invalidateLayout()
+    }
+    
+    
 }
 
 extension ViewController: ViewControllerUpdater {
