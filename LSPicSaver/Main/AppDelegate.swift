@@ -10,12 +10,21 @@ import CoreData
 
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
-
+    lazy var mainWindow: UIWindow = UIWindow()
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        startRouter()
         return true
     }
+    
+    func startRouter() {
+       
+        let mainCoordinator = MainCoordinator.getInstance()
+        let router = mainCoordinator.strongRouter
+        router.setRoot(for: mainWindow)
+        //router.trigger(.initial)
+    }
+
 
     // MARK: - Core Data stack
 

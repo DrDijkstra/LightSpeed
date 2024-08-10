@@ -35,9 +35,13 @@ class ApiProtocolImpl: ApiProtocol {
         _ urlRequest: URLRequestConvertible,
         gwCallback: @escaping (ApiGateWayCallResult<T>) -> Void
     ) {
-        sm.request(urlRequest).responseData { response in
+        sm.request(urlRequest).responseData {[weak self] response in
+            guard let self else {
+                return
+            }
             switch response.result {
             case .success(let data):
+                self.printPrettyJSON(from: data, isSuccess: true)
                 do {
                     let decodedResponse = try JSONDecoder().decode(T.self, from: data)
                     gwCallback(.success(decodedResponse))
@@ -45,6 +49,10 @@ class ApiProtocolImpl: ApiProtocol {
                     gwCallback(.failure(error))
                 }
             case .failure(let error):
+                if let data = response.data {
+                    // Prettify and print the JSON response for failure
+                    self.printPrettyJSON(from: data, isSuccess: true)
+                }
                 gwCallback(.failure(error))
             }
         }
@@ -55,9 +63,14 @@ class ApiProtocolImpl: ApiProtocol {
         _ urlRequest: URLRequestConvertible,
         gwCallback: @escaping (ApiGateWayCallResult<[T]>) -> Void
     ) {
-        sm.request(urlRequest).responseData { response in
+        sm.request(urlRequest).responseData {[weak self] response in
+            guard let self else {
+                return
+            }
             switch response.result {
             case .success(let data):
+                self.printPrettyJSON(from: data, isSuccess: true)
+
                 do {
                     let decodedResponse = try JSONDecoder().decode([T].self, from: data)
                     gwCallback(.success(decodedResponse))
@@ -65,8 +78,29 @@ class ApiProtocolImpl: ApiProtocol {
                     gwCallback(.failure(error))
                 }
             case .failure(let error):
+                if let data = response.data {
+                    // Prettify and print the JSON response for failure
+                    self.printPrettyJSON(from: data, isSuccess: true)
+                }
                 gwCallback(.failure(error))
             }
         }
     }
+    
+
+
+    private func printPrettyJSON(from data: Data, isSuccess: Bool) {
+        do {
+            let json = try JSONSerialization.jsonObject(with: data, options: [])
+            let prettyPrintedData = try JSONSerialization.data(withJSONObject: json, options: .prettyPrinted)
+            if let prettyPrintedString = String(data: prettyPrintedData, encoding: .utf8) {
+                let statusEmoji = isSuccess ? "✅✅✅" : "❌❌❌"
+                print("\(statusEmoji) ------------ Response ------------ \(statusEmoji)")
+                print(prettyPrintedString)
+            }
+        } catch {
+            print("Failed to prettify JSON: \(error)")
+        }
+    }
+
 }

@@ -23,6 +23,10 @@ class DomainModule {
         return selfRef!
     }
     
+    static func initModule(_ domainModule : DomainModule) {
+        selfRef = domainModule
+    }
+    
     func getPhotoFetcherService() -> PhotoFetcherService {
         if let service = photoFetcherService {
             return service

@@ -8,13 +8,19 @@ enum MainRoute: Route {
 
 class MainCoordinator: NavigationCoordinator<MainRoute> {
     
+    static private var shared : MainCoordinator? = nil
+    
+    static func getInstance() -> MainCoordinator{
+        if shared == nil{
+            shared = MainCoordinator()
+        }
+        return shared!
+    }
+    
     init() {
          super.init(initialRoute: .initial)
     }
     
-    init(rootViewController: RootViewController) {
-        super.init(rootViewController: rootViewController)
-    }
 
     override func prepareTransition(for route: MainRoute) -> NavigationTransition {
         switch route {

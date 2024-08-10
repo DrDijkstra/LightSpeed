@@ -18,6 +18,12 @@ class ViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter = PicSaverPresenterImpl(uiUpdateDelegate: self)
+        //presenter.fetchPhoto()
+    }
+    
+    @IBAction func onAddPhotoButtonPressed(_ sender: Any) {
+        presenter.fetchPhoto()
+        
     }
     
     static func getViewController() -> ViewController {

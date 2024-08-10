@@ -34,8 +34,15 @@ class ApiPhotoInfo: BaseResponse {
         self.downloadUrl = downloadUrl
     }
     
-    required init(from decoder: any Decoder) throws {
-        fatalError("init(from:) has not been implemented")
+    required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.id = try container.decodeIfPresent(String.self, forKey: .id)
+        self.author = try container.decodeIfPresent(String.self, forKey: .author)
+        self.width = try container.decodeIfPresent(Int.self, forKey: .width)
+        self.height = try container.decodeIfPresent(Int.self, forKey: .height)
+        self.url = try container.decodeIfPresent(String.self, forKey: .url)
+        self.downloadUrl = try container.decodeIfPresent(String.self, forKey: .downloadUrl)
+        try super.init(from: decoder)
     }
     
  }

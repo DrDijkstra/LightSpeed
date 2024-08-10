@@ -12,6 +12,7 @@ protocol BasePresenter {
 }
 
 class BasePresenterImpl : BasePresenter {
+    
     var interactor: LightSpeedCoreInteractor?
 
     init() {

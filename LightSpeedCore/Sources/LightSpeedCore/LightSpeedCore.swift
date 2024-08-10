@@ -26,6 +26,7 @@ public class LightSpeedCore {
     
     public func initSDK (apiGwURl: String) {
         domainModule = DomainModule(URL: apiGwURl)
+        DomainModule.initModule(domainModule!)
         interactor = LightSpeedCoreInteractorImpl()
     }
     

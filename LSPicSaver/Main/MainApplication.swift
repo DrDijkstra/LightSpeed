@@ -12,19 +12,11 @@ import LightSpeedCore
 
 class MainApplication: UIApplication {
     
-    var window = UIWindow()
-    var router:StrongRouter<MainRoute>!
-    
     override init() {
         super.init()
-        startRouter()
+        initSdk()
     }
     
-    func startRouter () {
-        let mainCordinator = MainCoordinator()
-        router = mainCordinator.strongRouter
-        router.setRoot(for: window)
-    }
     
     func initSdk () {
         LightSpeedCore.getInstance().initSDK(apiGwURl: Config.baseUrl)
