@@ -70,6 +70,3 @@ To run the tests:
 
 - Thanks to [Picsum](https://picsum.photos) for providing the free image API.
 
----
-
-Replace the placeholders with your actual repository link and other details as needed. This README file provides a clear overview of the app, its features, and instructions for running and contributing to the project.
