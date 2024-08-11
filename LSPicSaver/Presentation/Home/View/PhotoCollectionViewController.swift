@@ -16,7 +16,7 @@ protocol ViewControllerUpdater : AnyObject{
     func deleteDataInDataSource(indexPath: IndexPath)
 }
 
-class ViewController: BaseViewController {
+class PhotoCollectionViewController: BaseViewController {
 
     var presenter: PicSaverPresenter!
     var dataSource:[PhotoInfo] = []
@@ -75,7 +75,7 @@ class ViewController: BaseViewController {
 }
 
 
-extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension PhotoCollectionViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return dataSource.count
     }
@@ -100,7 +100,7 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
 }
 
-extension ViewController: ViewControllerUpdater {
+extension PhotoCollectionViewController: ViewControllerUpdater {
     func deleteDataInDataSource(indexPath: IndexPath) {
         self.addButton.isEnabled = false
         DispatchQueue.main.async {
@@ -143,7 +143,7 @@ extension ViewController: ViewControllerUpdater {
     
 }
 
-extension ViewController: CHTCollectionViewDelegateWaterfallLayout {
+extension PhotoCollectionViewController: CHTCollectionViewDelegateWaterfallLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let item = dataSource[indexPath.row]
         let height = item.height ?? 100
@@ -154,7 +154,7 @@ extension ViewController: CHTCollectionViewDelegateWaterfallLayout {
     }
 }
 
-extension ViewController:PhotoCollectionDelegate {
+extension PhotoCollectionViewController:PhotoCollectionDelegate {
     func onCrossButtonPressed(in cell: PhotoCollectionViewCell) {
         guard let indexPath = collectionView.indexPath(for: cell) else {
             return
@@ -167,10 +167,10 @@ extension ViewController:PhotoCollectionDelegate {
     
 }
 
-extension ViewController {
-    static func getViewController() -> ViewController {
+extension PhotoCollectionViewController {
+    static func getViewController() -> PhotoCollectionViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
+        let vc = storyboard.instantiateViewController(withIdentifier: "ViewController") as! PhotoCollectionViewController
         return vc
     }
 }

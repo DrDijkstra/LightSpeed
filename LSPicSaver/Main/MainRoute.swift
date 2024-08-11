@@ -25,7 +25,7 @@ class MainCoordinator: NavigationCoordinator<MainRoute> {
     override func prepareTransition(for route: MainRoute) -> NavigationTransition {
         switch route {
         case .initial:
-            let viewController = ViewController.getViewController()
+            let viewController = PhotoCollectionViewController.getViewController()
             return .push(viewController)
         }
     }
