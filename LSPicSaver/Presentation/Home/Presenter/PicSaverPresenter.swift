@@ -51,10 +51,11 @@ class PicSaverPresenterImpl: BasePresenterImpl, PicSaverPresenter{
                 return
             }
             if isSuccess {
-                self.interactor?.fetchRandomPhoto(index: totalImageCount, completion: {
-                    photoInfo,index in
-                    self.updatePhotoDataSource(photoInfo: photoInfo, index: index)
-                })
+                self.uiUpdateDelegate.updateCollectionView(list: photoList)
+//                self.interactor?.fetchRandomPhoto(index: totalImageCount, completion: {
+//                    photoInfo,index in
+//                    self.updatePhotoDataSource(photoInfo: photoInfo, index: index)
+//                })
                
             }
         })
