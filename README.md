@@ -55,7 +55,7 @@ The app includes unit tests for key functionalities, such as:
 To run the tests:
 
 1. Open the project in Xcode.
-2. Select the "RandomContentFetcher" scheme.
+2. Select the "LSPicSaver" scheme.
 3. Press `Command + U` to run the tests.
 
 ## Dependencies
