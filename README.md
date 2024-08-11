@@ -38,11 +38,34 @@ This is a simple iOS app that fetches random images from an API, displays them i
 3. **Reorder Items**: Tap and hold an item to drag and reorder it within the list.
 
 ## Architecture
+![Architecture Diagram](architecture.jpg)
+The architecture depicted in the diagram follows the VIPER pattern, commonly used in iOS development to separate concerns and improve code organization. Here's a brief overview of the architecture:
 
-- **Networking**: The app uses `URLSession` to handle API requests.
-- **Persistence**: Data is persisted using `UserDefaults` or CoreData (based on your implementation).
-- **UI**: The UI is built using UIKit, with a focus on a responsive and polished design.
-- **Delegates**: The app uses delegates and protocols for communication between components.
+### Application Layer:
+1. **Main**: This is likely the entry point of the application, responsible for setting up the initial environment and launching the main features.
+2. **SDK Initialization**: Handles the initialization of any SDKs or third-party services used in the app.
+3. **Config**: Manages configuration settings and environment variables.
+4. **Main Router**: Directs navigation and flow within the app, possibly coordinating the initial setup.
+5. **View**: The user interface layer that interacts with the user and displays information.
+6. **Presenter**: Acts as a mediator between the View and the Interactor, handling the business logic and preparing data to be displayed by the View.
+7. **Router**: Manages navigation between different screens or modules within the app.
+
+### Network Layer:
+1. **Interactor**: Handles the business logic and communicates with the network layer. It receives requests from the Presenter and interacts with services or repositories to fetch or modify data.
+2. **Service**: Provides the actual implementation for network requests, interacting with APIs or other network services.
+3. **Repository**: Manages data persistence, typically abstracting the details of data storage and retrieval. It may interact with both local databases and remote servers.
+4. **Database**: Manages local data storage, using Core Data.
+5. **Api Gateway Service**: Central point for managing API requests, possibly handling authentication, caching, and other network-related tasks.
+6. **Interceptor**: Manages HTTP request and response interception, often used for handling authentication tokens, logging, or modifying requests.
+7. **Json Serializer/Deserializer**: Handles the conversion between JSON data and Swift models, ensuring proper encoding and decoding.
+8. **Domain Module**: Represents the core business logic and entities of the app, ensuring separation of concerns and reusability.
+
+### Server:
+- **Server**: Represents the external backend services that the app communicates with via the network layer.
+
+This architecture provides a clear separation of concerns, allowing each component to focus on a specific responsibility, which improves maintainability, testability, and scalability of the iOS application.
+
+
 
 ## Testing
 
