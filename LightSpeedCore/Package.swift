@@ -13,11 +13,8 @@ let package = Package(
         )
     ],
     dependencies: [
-        // Alamofire dependency
         .package(url: "https://github.com/Alamofire/Alamofire.git", from: "5.6.4"),
-        // XCoordinator dependency
         .package(url: "https://github.com/quickbirdstudios/XCoordinator.git", from: "2.0.0"),
-        // Kingfisher dependency
         .package(url: "https://github.com/onevcat/Kingfisher.git", from: "7.0.0"),
         .package(url: "https://github.com/chiahsien/CHTCollectionViewWaterfallLayout.git", from: "0.9.9")
     ],

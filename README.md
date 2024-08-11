@@ -60,16 +60,11 @@ To run the tests:
 
 ## Dependencies
 
-- [Alamofire](https://github.com/Alamofire/Alamofire) (optional): For networking tasks.
-- [Kingfisher](https://github.com/onevcat/Kingfisher) (optional): For loading and caching images.
+- [Alamofire](https://github.com/Alamofire/Alamofire) 
+- [Kingfisher](https://github.com/onevcat/Kingfisher) 
+- [XCoordinator](https://github.com/quickbirdstudios/XCoordinator) 
+- [CHTCollectionViewWaterfallLayout](https://github.com/chiahsien/CHTCollectionViewWaterfallLayout)
 
-## Contributing
-
-Feel free to fork the project and submit pull requests. Any improvements or suggestions are welcome!
-
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ## Acknowledgments
 
