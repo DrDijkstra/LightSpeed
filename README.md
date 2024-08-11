@@ -26,8 +26,8 @@ This is a simple iOS app that fetches random images from an API, displays them i
    ```
 2. Open the project in Xcode:
    ```bash
-   cd RandomContentFetcher
-   open RandomContentFetcher.xcodeproj
+   cd LightSpeed
+   open LSPicSaver.xcodeproj
    ```
 3. Build and run the project on the simulator or a physical device.
 
