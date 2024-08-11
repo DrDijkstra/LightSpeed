@@ -33,7 +33,7 @@ This is a simple iOS app that fetches random images from an API, displays them i
 
 ## Usage
 
-1. **Fetch and Save**: Tap the "Fetch Random Image" button to fetch a random image from the API. The image and its author will be saved locally and added to the list.
+1. **Fetch and Save**: Tap the "Add Button" button to fetch a random image from the API. The image and its author will be saved locally and added to the list.
 2. **Delete Items**: Swipe left on an item in the list to delete it.
 3. **Reorder Items**: Tap and hold an item to drag and reorder it within the list.
 
