@@ -8,7 +8,7 @@ This is a simple iOS app that fetches random images from an API, displays them i
 - **Persistence**: The fetched images are saved locally and appended to the bottom of the list.
 - **UI Updates**: The UI updates dynamically as new items are added.
 - **Content Management**: Users can delete and reorder items in the list.
-- **Swift Package Manager**: The app uses SPM for managing dependencies (if any).
+- **Swift Package Manager**: The app uses SPM for managing dependencies .
 - **Testing**: Includes unit tests to ensure the app's functionality.
 
 ## Getting Started
@@ -16,7 +16,7 @@ This is a simple iOS app that fetches random images from an API, displays them i
 ### Prerequisites
 
 - Xcode 14.0 or later
-- iOS 15.0 or later
+- iOS 17.0 or later
 
 ### Installation
 
