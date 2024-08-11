@@ -22,7 +22,7 @@ This is a simple iOS app that fetches random images from an API, displays them i
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/RandomContentFetcher.git
+   git clone https://github.com/DrDijkstra/LightSpeed.git
    ```
 2. Open the project in Xcode:
    ```bash
