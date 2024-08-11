@@ -21,18 +21,33 @@ class PhotoCollectionViewController: BaseViewController {
     var presenter: PicSaverPresenter!
     var dataSource:[PhotoInfo] = []
     
+    var refreshControl = UIRefreshControl()
+
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter = PicSaverPresenterImpl(uiUpdateDelegate: self)
+        
+        setupCollectionView()
+    }
+    
+    private func setupCollectionView() {
         let layout = CHTCollectionViewWaterfallLayout()
         layout.columnCount = 2
         layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         collectionView.collectionViewLayout = layout
-        let gesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPressGesture(_:) ))
+        
+        let gesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPressGesture(_:)))
         collectionView.addGestureRecognizer(gesture)
+        
+        refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
+        collectionView.addSubview(refreshControl)
+    }
+
+    @objc private func refreshData() {
+        presenter.fetchPhoto()
     }
     
     @objc func handleLongPressGesture(_ gesture : UILongPressGestureRecognizer) {
@@ -124,7 +139,6 @@ extension PhotoCollectionViewController: ViewControllerUpdater {
         }
 
         dataSource[index] = photoInfo
-        
         DispatchQueue.main.async {
             let indexPath = IndexPath(item: index, section: 0)
             self.collectionView.performBatchUpdates({
@@ -137,6 +151,7 @@ extension PhotoCollectionViewController: ViewControllerUpdater {
         DispatchQueue.main.async{
             self.dataSource = list
             self.collectionView.reloadData()
+            self.refreshControl.endRefreshing()
         }
     }
     

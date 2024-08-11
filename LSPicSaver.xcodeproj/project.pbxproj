@@ -159,7 +159,6 @@
 		4AD3E5872C671BD600222722 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				4AD3E58A2C671C2500222722 /* Router */,
 				4AD3E5892C671C1300222722 /* Presenter */,
 				4AD3E5882C671C0A00222722 /* View */,
 			);
@@ -181,13 +180,6 @@
 				4AD3E58E2C671C8100222722 /* PicSaverPresenter.swift */,
 			);
 			path = Presenter;
-			sourceTree = "<group>";
-		};
-		4AD3E58A2C671C2500222722 /* Router */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Router;
 			sourceTree = "<group>";
 		};
 		4AD3E58D2C671C5600222722 /* Storyboard */ = {

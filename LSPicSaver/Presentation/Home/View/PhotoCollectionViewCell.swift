@@ -28,16 +28,24 @@ class PhotoCollectionViewCell: UICollectionViewCell {
         }
 
         func setView(info: PhotoInfo) {
-            if let imgUrlString = info.downloadUrl, let imgUrl = URL(string: imgUrlString) {
-                imageView.showAnimatedGradientSkeleton()
-                
-                imageView.kf.setImage(with: imgUrl, completionHandler: { result in
+            DispatchQueue.main.async {
+                [weak self] in
+                guard let self = self else{
+                    return
+                }
+
+                if let imgUrlString = info.downloadUrl, let imgUrl = URL(string: imgUrlString) {
+                    self.imageView.showAnimatedGradientSkeleton()
+                    self.imageView.kf.setImage(with: imgUrl, completionHandler: { result in
+                        self.imageView.hideSkeleton()
+                        if let authorNameText = info.author {
+                            self.authorName.text = authorNameText
+                        }
+                    })
+                } else {
                     self.imageView.hideSkeleton()
-                })
-            } else {
-                imageView.hideSkeleton()
+                }
             }
-            authorName.text = info.author
         }
     
     

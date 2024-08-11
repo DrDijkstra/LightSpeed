@@ -44,13 +44,15 @@ class PicSaverPresenterImpl: BasePresenterImpl, PicSaverPresenter{
     
     func saveInLocalDb(photoList: [PhotoInfo]) {
         interactor?.removeAllPhoto()
-        addInitialData()
+        totalImageCount = 0
+//        addInitialData()
         interactor?.savePhotoList(photoInfoList: photoList, completion: {
             [weak self] isSuccess in
             guard let self = self else {
                 return
             }
             if isSuccess {
+                self.totalImageCount = photoList.count
                 self.uiUpdateDelegate.updateCollectionView(list: photoList)
 //                self.interactor?.fetchRandomPhoto(index: totalImageCount, completion: {
 //                    photoInfo,index in
@@ -69,6 +71,7 @@ class PicSaverPresenterImpl: BasePresenterImpl, PicSaverPresenter{
     }
     
     func addInitialData() {
+        totalImageCount += 1
         let photoInfo = PhotoInfo()
         photoInfo.author = "fetching image..."
         self.uiUpdateDelegate.appendNewDataInDataSource(photoInfo: photoInfo)
