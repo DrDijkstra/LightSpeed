@@ -11,7 +11,7 @@ import Kingfisher
 import SkeletonView
 
 protocol PhotoCollectionDelegate:AnyObject {
-    func onCrossButtonPressed(indexPath:IndexPath)
+    func onCrossButtonPressed(in cell: PhotoCollectionViewCell)
 }
 
 class PhotoCollectionViewCell: UICollectionViewCell {
@@ -20,7 +20,6 @@ class PhotoCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var authorName: UILabel!
     
     weak var delegate:PhotoCollectionDelegate!
-    var indexPath:IndexPath!
     
     override func awakeFromNib() {
             super.awakeFromNib()
@@ -43,7 +42,7 @@ class PhotoCollectionViewCell: UICollectionViewCell {
     
     
     @IBAction func onCancelButtonPressed(_ sender: Any) {
-        delegate.onCrossButtonPressed(indexPath: indexPath)
+        delegate.onCrossButtonPressed(in: self)
     }
     
 }

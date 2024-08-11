@@ -84,7 +84,6 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoCollectionViewCell", for: indexPath) as! PhotoCollectionViewCell
         cell.setView(info: dataSource[indexPath.row])
         cell.delegate = self
-        cell.indexPath = indexPath
         return cell
     }
     
@@ -156,7 +155,10 @@ extension ViewController: CHTCollectionViewDelegateWaterfallLayout {
 }
 
 extension ViewController:PhotoCollectionDelegate {
-    func onCrossButtonPressed(indexPath: IndexPath) {
+    func onCrossButtonPressed(in cell: PhotoCollectionViewCell) {
+        guard let indexPath = collectionView.indexPath(for: cell) else {
+            return
+        }
         showDeleteConfirmationAlert(deleteAction: {
             self.presenter.onDeleteButtonPressed(indexPath: indexPath)
         })
