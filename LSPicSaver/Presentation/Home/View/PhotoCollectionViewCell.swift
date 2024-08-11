@@ -27,26 +27,26 @@ class PhotoCollectionViewCell: UICollectionViewCell {
             imageView.showAnimatedGradientSkeleton()
         }
 
-        func setView(info: PhotoInfo) {
-            DispatchQueue.main.async {
-                [weak self] in
-                guard let self = self else{
-                    return
-                }
+    func setView(info: PhotoInfo, index:Int) {
+        DispatchQueue.main.async {
+            [weak self] in
+            guard let self = self else{
+                return
+            }
 
-                if let imgUrlString = info.downloadUrl, let imgUrl = URL(string: imgUrlString) {
-                    self.imageView.showAnimatedGradientSkeleton()
-                    self.imageView.kf.setImage(with: imgUrl, completionHandler: { result in
-                        self.imageView.hideSkeleton()
-                        if let authorNameText = info.author {
-                            self.authorName.text = authorNameText
-                        }
-                    })
-                } else {
+            if let imgUrlString = info.downloadUrl, let imgUrl = URL(string: imgUrlString) {
+                self.imageView.showAnimatedGradientSkeleton()
+                self.imageView.kf.setImage(with: imgUrl, completionHandler: { result in
                     self.imageView.hideSkeleton()
-                }
+                    if let authorNameText = info.author {
+                        self.authorName.text = "\(authorNameText)"
+                    }
+                })
+            } else {
+                self.imageView.hideSkeleton()
             }
         }
+    }
     
     
     @IBAction func onCancelButtonPressed(_ sender: Any) {

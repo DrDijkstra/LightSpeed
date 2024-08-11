@@ -65,7 +65,6 @@ class PicSaverPresenterImpl: BasePresenterImpl, PicSaverPresenter{
     
     func updatePhotoDataSource(photoInfo: PhotoInfo?, index:Int) {
         if let photoInfo {
-            self.totalImageCount += 1
             self.uiUpdateDelegate.replaceNewDataInDataSource(photoInfo: photoInfo, index: index)
         }
     }

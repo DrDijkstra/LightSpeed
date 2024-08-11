@@ -97,7 +97,8 @@ extension PhotoCollectionViewController: UICollectionViewDelegate, UICollectionV
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoCollectionViewCell", for: indexPath) as! PhotoCollectionViewCell
-        cell.setView(info: dataSource[indexPath.row])
+
+        cell.setView(info: dataSource[indexPath.row], index: indexPath.row)
         cell.delegate = self
         return cell
     }
