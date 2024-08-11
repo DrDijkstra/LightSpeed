@@ -21,21 +21,21 @@
                                 <rect key="frame" x="0.0" y="59" width="393" height="759"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="8fH-nk-vZ7" customClass="WaterfallLayout" customModule="LSPicSaver" customModuleProvider="target">
-                                    <size key="itemSize" width="61" height="100"/>
+                                    <size key="itemSize" width="199" height="158"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PhotoCollectionViewCell" id="mVe-Y0-RVg" customClass="PhotoCollectionViewCell" customModule="LSPicSaver" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="61" height="100"/>
+                                        <rect key="frame" x="97" y="0.0" width="199" height="158"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="ZGR-Yz-0pm">
-                                            <rect key="frame" x="0.0" y="0.0" width="61" height="100"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="199" height="158"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xQz-nr-bAm">
-                                                    <rect key="frame" x="2" y="0.0" width="57" height="100"/>
+                                                    <rect key="frame" x="2" y="0.0" width="195" height="158"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="60" id="YGQ-uT-usT"/>
                                                         <constraint firstAttribute="width" secondItem="xQz-nr-bAm" secondAttribute="height" multiplier="1:1" constant="8" id="zwN-uJ-dgo"/>
@@ -47,10 +47,10 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XGZ-6z-yHA">
-                                                    <rect key="frame" x="2" y="80" width="57" height="20"/>
+                                                    <rect key="frame" x="2" y="138" width="195" height="20"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M6S-Pa-aUr">
-                                                            <rect key="frame" x="13" y="3.0000000000000009" width="31" height="14.333333333333336"/>
+                                                            <rect key="frame" x="82" y="3.0000000000000009" width="31" height="14.333333333333336"/>
                                                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
@@ -63,12 +63,27 @@
                                                         <constraint firstItem="M6S-Pa-aUr" firstAttribute="centerY" secondItem="XGZ-6z-yHA" secondAttribute="centerY" id="pFQ-0v-zmq"/>
                                                     </constraints>
                                                 </view>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hhP-FG-vR1">
+                                                    <rect key="frame" x="172" y="0.0" width="25" height="25"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="25" id="1g6-Pr-4Np"/>
+                                                        <constraint firstAttribute="width" secondItem="hhP-FG-vR1" secondAttribute="height" multiplier="1:1" id="t8F-4D-Ly2"/>
+                                                    </constraints>
+                                                    <color key="tintColor" systemColor="systemRedColor"/>
+                                                    <state key="normal" title="Button"/>
+                                                    <buttonConfiguration key="configuration" style="plain" image="minus.circle.fill" catalog="system"/>
+                                                    <connections>
+                                                        <action selector="onCancelButtonPressed:" destination="mVe-Y0-RVg" eventType="touchUpInside" id="wjS-sF-fSk"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="XGZ-6z-yHA" firstAttribute="leading" secondItem="xQz-nr-bAm" secondAttribute="leading" id="39z-qp-TEE"/>
+                                                <constraint firstItem="hhP-FG-vR1" firstAttribute="trailing" secondItem="xQz-nr-bAm" secondAttribute="trailing" id="3nK-KA-vM2"/>
                                                 <constraint firstItem="XGZ-6z-yHA" firstAttribute="bottom" secondItem="xQz-nr-bAm" secondAttribute="bottom" id="8aO-nk-Fjt"/>
                                                 <constraint firstItem="XGZ-6z-yHA" firstAttribute="trailing" secondItem="xQz-nr-bAm" secondAttribute="trailing" id="H2y-7Q-Toz"/>
                                                 <constraint firstItem="xQz-nr-bAm" firstAttribute="leading" secondItem="ZGR-Yz-0pm" secondAttribute="leading" constant="2" id="LbQ-VA-X11"/>
+                                                <constraint firstItem="hhP-FG-vR1" firstAttribute="top" secondItem="xQz-nr-bAm" secondAttribute="top" id="TUH-BK-LRL"/>
                                                 <constraint firstAttribute="trailing" secondItem="xQz-nr-bAm" secondAttribute="trailing" constant="2" id="Y5f-PW-AoC"/>
                                                 <constraint firstAttribute="bottom" secondItem="xQz-nr-bAm" secondAttribute="bottom" id="pfM-ib-enC"/>
                                                 <constraint firstAttribute="bottom" secondItem="xQz-nr-bAm" secondAttribute="bottom" id="sNx-ba-kVw"/>
@@ -85,7 +100,7 @@
                                                 </mask>
                                             </variation>
                                         </collectionViewCellContentView>
-                                        <size key="customSize" width="61" height="100"/>
+                                        <size key="customSize" width="199" height="158"/>
                                         <connections>
                                             <outlet property="authorName" destination="M6S-Pa-aUr" id="w2D-9B-jEE"/>
                                             <outlet property="imageView" destination="xQz-nr-bAm" id="02X-Dh-3ei"/>
@@ -141,11 +156,15 @@
     </scenes>
     <resources>
         <image name="add" width="170.66667175292969" height="170.66667175292969"/>
+        <image name="minus.circle.fill" catalog="system" width="128" height="123"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

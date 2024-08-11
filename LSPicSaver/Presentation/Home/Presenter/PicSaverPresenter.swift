@@ -12,6 +12,7 @@ protocol PicSaverPresenter {
     func fetchPhoto()
     func onAddButtonPressed()
     func collectionViewUiLoaded()
+    func onDeleteButtonPressed(indexPath:IndexPath)
 }
 
 
@@ -81,5 +82,10 @@ class PicSaverPresenterImpl: BasePresenterImpl, PicSaverPresenter{
             photoInfo,index in
             self.updatePhotoDataSource(photoInfo: photoInfo, index: index)
         })
+    }
+    
+    func onDeleteButtonPressed(indexPath:IndexPath) {
+        self.totalImageCount -= 1
+        uiUpdateDelegate.deleteDataInDataSource(indexPath: indexPath)
     }
 }

@@ -13,6 +13,7 @@ protocol ViewControllerUpdater : AnyObject{
     func updateCollectionView(list: [PhotoInfo])
     func appendNewDataInDataSource(photoInfo: PhotoInfo)
     func replaceNewDataInDataSource(photoInfo: PhotoInfo, index: Int)
+    func deleteDataInDataSource(indexPath: IndexPath)
 }
 
 class ViewController: BaseViewController {
@@ -82,7 +83,8 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoCollectionViewCell", for: indexPath) as! PhotoCollectionViewCell
         cell.setView(info: dataSource[indexPath.row])
-        cell.authorName.text = dataSource[indexPath.row].author
+        cell.delegate = self
+        cell.indexPath = indexPath
         return cell
     }
     
@@ -97,10 +99,26 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
         collectionView.collectionViewLayout.invalidateLayout()
     }
     
-    
 }
 
 extension ViewController: ViewControllerUpdater {
+    func deleteDataInDataSource(indexPath: IndexPath) {
+        self.addButton.isEnabled = false
+        DispatchQueue.main.async {
+            if indexPath.row < self.dataSource.count {
+                self.dataSource.remove(at: indexPath.row)
+                self.collectionView.performBatchUpdates({
+                    self.collectionView.deleteItems(at: [indexPath])
+                }, completion: {_ in
+                    self.addButton.isEnabled = true
+                })
+            }else {
+                self.addButton.isEnabled = true
+            }
+            
+        }
+    }
+    
     func replaceNewDataInDataSource(photoInfo: PhotoInfo, index: Int) {
         guard index >= 0 && index < dataSource.count else {
             return
@@ -122,6 +140,8 @@ extension ViewController: ViewControllerUpdater {
             self.collectionView.reloadData()
         }
     }
+    
+    
 }
 
 extension ViewController: CHTCollectionViewDelegateWaterfallLayout {
@@ -133,6 +153,16 @@ extension ViewController: CHTCollectionViewDelegateWaterfallLayout {
         let imageSize = CGSize(width: width, height: height)
         return imageSize
     }
+}
+
+extension ViewController:PhotoCollectionDelegate {
+    func onCrossButtonPressed(indexPath: IndexPath) {
+        showDeleteConfirmationAlert(deleteAction: {
+            self.presenter.onDeleteButtonPressed(indexPath: indexPath)
+        })
+    }
+    
+    
 }
 
 extension ViewController {
