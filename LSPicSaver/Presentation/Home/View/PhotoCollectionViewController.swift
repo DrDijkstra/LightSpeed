@@ -140,7 +140,6 @@ extension PhotoCollectionViewController: ViewControllerUpdater {
         }
     }
     
-    
 }
 
 extension PhotoCollectionViewController: CHTCollectionViewDelegateWaterfallLayout {

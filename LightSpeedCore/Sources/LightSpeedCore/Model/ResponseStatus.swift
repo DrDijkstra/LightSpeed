@@ -8,5 +8,7 @@
 import Foundation
 
 public class ResponseStatus {
-    
+    public init () {
+        
+    }
 }

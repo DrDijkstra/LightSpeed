@@ -11,6 +11,8 @@
 		4A6182522C66A98F006FF2F0 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6182512C66A98F006FF2F0 /* main.swift */; };
 		4A6182552C66A9E4006FF2F0 /* MainApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6182542C66A9E4006FF2F0 /* MainApplication.swift */; };
 		4A6182572C66AC97006FF2F0 /* MainRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6182562C66AC97006FF2F0 /* MainRoute.swift */; };
+		4AA3A72F2C6877AA00495E2A /* LSPicSaverTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA3A72E2C6877AA00495E2A /* LSPicSaverTests.swift */; };
+		4AA3A7362C6877D100495E2A /* PresenterUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA3A7352C6877D100495E2A /* PresenterUnitTests.swift */; };
 		4ACC85E02C67F981001B57D8 /* SkeletonView in Frameworks */ = {isa = PBXBuildFile; productRef = 4ACC85DF2C67F981001B57D8 /* SkeletonView */; };
 		4ACC85E32C6817C7001B57D8 /* UIView+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACC85E22C6817C7001B57D8 /* UIView+Extention.swift */; };
 		4AD022982C66A1E4001F65B7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD022972C66A1E4001F65B7 /* AppDelegate.swift */; };
@@ -25,10 +27,23 @@
 		4AD3E59A2C673EF300222722 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD3E5992C673EF300222722 /* PhotoCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		4AA3A7302C6877AA00495E2A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4AD0228C2C66A1E4001F65B7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4AD022932C66A1E4001F65B7;
+			remoteInfo = LSPicSaver;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		4A6182512C66A98F006FF2F0 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		4A6182542C66A9E4006FF2F0 /* MainApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainApplication.swift; sourceTree = "<group>"; };
 		4A6182562C66AC97006FF2F0 /* MainRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRoute.swift; sourceTree = "<group>"; };
+		4AA3A72C2C6877A900495E2A /* LSPicSaverTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LSPicSaverTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4AA3A72E2C6877AA00495E2A /* LSPicSaverTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LSPicSaverTests.swift; sourceTree = "<group>"; };
+		4AA3A7352C6877D100495E2A /* PresenterUnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresenterUnitTests.swift; sourceTree = "<group>"; };
 		4ACC85E22C6817C7001B57D8 /* UIView+Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extention.swift"; sourceTree = "<group>"; };
 		4AD022942C66A1E4001F65B7 /* LSPicSaver.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LSPicSaver.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4AD022972C66A1E4001F65B7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -45,6 +60,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		4AA3A7292C6877A900495E2A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4AD022912C66A1E4001F65B7 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -68,6 +90,15 @@
 			path = Main;
 			sourceTree = "<group>";
 		};
+		4AA3A72D2C6877AA00495E2A /* LSPicSaverTests */ = {
+			isa = PBXGroup;
+			children = (
+				4AA3A72E2C6877AA00495E2A /* LSPicSaverTests.swift */,
+				4AA3A7352C6877D100495E2A /* PresenterUnitTests.swift */,
+			);
+			path = LSPicSaverTests;
+			sourceTree = "<group>";
+		};
 		4ACC85E12C6817B2001B57D8 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -80,6 +111,7 @@
 			isa = PBXGroup;
 			children = (
 				4AD022962C66A1E4001F65B7 /* LSPicSaver */,
+				4AA3A72D2C6877AA00495E2A /* LSPicSaverTests */,
 				4AD022952C66A1E4001F65B7 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -88,6 +120,7 @@
 			isa = PBXGroup;
 			children = (
 				4AD022942C66A1E4001F65B7 /* LSPicSaver.app */,
+				4AA3A72C2C6877A900495E2A /* LSPicSaverTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -194,6 +227,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		4AA3A72B2C6877A900495E2A /* LSPicSaverTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4AA3A7322C6877AA00495E2A /* Build configuration list for PBXNativeTarget "LSPicSaverTests" */;
+			buildPhases = (
+				4AA3A7282C6877A900495E2A /* Sources */,
+				4AA3A7292C6877A900495E2A /* Frameworks */,
+				4AA3A72A2C6877A900495E2A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4AA3A7312C6877AA00495E2A /* PBXTargetDependency */,
+			);
+			name = LSPicSaverTests;
+			productName = LSPicSaverTests;
+			productReference = 4AA3A72C2C6877A900495E2A /* LSPicSaverTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		4AD022932C66A1E4001F65B7 /* LSPicSaver */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4AD022AB2C66A1E6001F65B7 /* Build configuration list for PBXNativeTarget "LSPicSaver" */;
@@ -225,6 +276,10 @@
 				LastSwiftUpdateCheck = 1530;
 				LastUpgradeCheck = 1530;
 				TargetAttributes = {
+					4AA3A72B2C6877A900495E2A = {
+						CreatedOnToolsVersion = 15.3;
+						TestTargetID = 4AD022932C66A1E4001F65B7;
+					};
 					4AD022932C66A1E4001F65B7 = {
 						CreatedOnToolsVersion = 15.3;
 					};
@@ -248,11 +303,19 @@
 			projectRoot = "";
 			targets = (
 				4AD022932C66A1E4001F65B7 /* LSPicSaver */,
+				4AA3A72B2C6877A900495E2A /* LSPicSaverTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		4AA3A72A2C6877A900495E2A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4AD022922C66A1E4001F65B7 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -266,6 +329,15 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		4AA3A7282C6877A900495E2A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4AA3A7362C6877D100495E2A /* PresenterUnitTests.swift in Sources */,
+				4AA3A72F2C6877AA00495E2A /* LSPicSaverTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4AD022902C66A1E4001F65B7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -285,6 +357,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4AA3A7312C6877AA00495E2A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4AD022932C66A1E4001F65B7 /* LSPicSaver */;
+			targetProxy = 4AA3A7302C6877AA00495E2A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		4AD0229D2C66A1E4001F65B7 /* Main.storyboard */ = {
@@ -306,6 +386,42 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		4AA3A7332C6877AA00495E2A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = XB6YVXU52N;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lightspeed.LSPicSaverTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LSPicSaver.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/LSPicSaver";
+			};
+			name = Debug;
+		};
+		4AA3A7342C6877AA00495E2A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = XB6YVXU52N;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lightspeed.LSPicSaverTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LSPicSaver.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/LSPicSaver";
+			};
+			name = Release;
+		};
 		4AD022A92C66A1E6001F65B7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -482,6 +598,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		4AA3A7322C6877AA00495E2A /* Build configuration list for PBXNativeTarget "LSPicSaverTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4AA3A7332C6877AA00495E2A /* Debug */,
+				4AA3A7342C6877AA00495E2A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		4AD0228F2C66A1E4001F65B7 /* Build configuration list for PBXProject "LSPicSaver" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
