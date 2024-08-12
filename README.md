@@ -1,7 +1,7 @@
 # LightSpeed Pic Saver
 
 This is a simple iOS app that fetches random images from an API, displays them in a list, and allows users to manage the content by adding, deleting, and reordering items. The app is built using UIKit and leverages Swift Package Manager (SPM) for dependency management.
-![alt text](demo.gif)
+<img src="demo.gif" alt="Description" height="300">
 
 ## Features
 
